@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const justify = require('./src/routes/justify');
-const token = require('./src/routes/token');
+const justify = require('./src/routes/justify-routes');
+const token = require('./src/routes/token-routes');
 const auth = require('./src/middleware/auth');
 
 const app = express();
