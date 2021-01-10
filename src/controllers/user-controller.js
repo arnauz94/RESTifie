@@ -13,7 +13,7 @@ module.exports = {
             });
         }).catch( () => {
             res.status(400).json({
-                error: "La syntaxe de la requete est erronee."
+                error: "La syntaxe de la requete est erronee"
             })
         });
     },
@@ -21,7 +21,7 @@ module.exports = {
         const email = req.body.email
 
         if (!validator.validate(email)) {
-            res.status(403).json({
+            res.status(400).json({
                 error:"email invalide"
             })
             return ;

@@ -1,5 +1,7 @@
 const User = require('../models/user');
 
+const BadRequest = "La syntaxe de la requete est erronee"; 
+
 String.prototype.splice = function (idx, rem, str) {
     return this.slice(0, idx) + str + this.slice(idx + Math.abs(rem));
 };
@@ -26,7 +28,7 @@ module.exports = {
 
         if (text === undefined) {
             res.status(400).json({
-                error: "email invalide"
+                error: BadRequest
             })
         }
 
@@ -47,13 +49,13 @@ module.exports = {
                 res.send(result);
             }).catch(() => {
                 res.status(400).json({
-                    error: "La syntaxe de la requete est erronee."
+                    error: BadRequest
                 })
             });
 
         }).catch(() => {
             res.status(400).json({
-                error: "La syntaxe de la requete est erronee."
+                error: BadRequest
             })
         });
     }
