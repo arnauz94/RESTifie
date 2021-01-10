@@ -31,7 +31,7 @@ module.exports = {
             res.status(200).json({
                 token: jwt.sign(
                     { UserId: user._id },
-                    'iyU0QAcBHcqScHD4wwWB0Vum5CobZA65eEVa0uMLT7',
+                    'your_secret_key',
                     { expiresIn: '740h' }
                 )
             });

@@ -4,7 +4,7 @@ UserController = require('../controllers/user-controller');
 module.exports = (req, res, next) => {
   try {
     const token = req.headers.token;
-    const decodedToken = jwt.verify(token, 'iyU0QAcBHcqScHD4wwWB0Vum5CobZA65eEVa0uMLT7');
+    const decodedToken = jwt.verify(token, 'your_secret_key');
     const userId = decodedToken.UserId;
 
     req.UserId = userId
