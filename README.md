@@ -1,5 +1,6 @@
 # RESTifie
-this API Justify text for 80 000 words per day.
+This API Justify text for 80 000 words per day.
+Maximum 80 characters line and words cut least as posssible.
 
 | Request type  | URL        | Body              | Header        | Response                | Error      |
 | ------------: | ---------: | ----------------: | ------------: | ----------------------: |-----------: |
