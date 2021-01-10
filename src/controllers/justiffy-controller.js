@@ -1,6 +1,6 @@
 const User = require('../models/user');
 
-const BadRequest = "La syntaxe de la requete est erronee"; 
+const BadRequest = "Bad Request"; 
 
 String.prototype.splice = function (idx, rem, str) {
     return this.slice(0, idx) + str + this.slice(idx + Math.abs(rem));
@@ -30,14 +30,14 @@ module.exports = {
             res.status(400).json({
                 error: BadRequest
             })
+            return ;
         }
-
         nbWord = text.match(/\S+/g).length;
 
         User.findById({ _id: id }).then((user) => {
             if (user.nbWord + nbWord > 80000) {
                 res.status(402).json({
-                    error: "vous avez depasser la limite quotidienne de 80 000 mots"
+                    error: "you have exceeded the daily limit of 80,000 words"
                 })
                 return;
             }
@@ -59,5 +59,4 @@ module.exports = {
             })
         });
     }
-
 };

@@ -9,11 +9,11 @@ module.exports = {
         
         User.findById({_id:id}).then( (user) => {
             res.status(200).json({
-                    email: user.email, nb_mots_justifier_aujourdhui: user.nbWord
+                    email: user.email, nb_word_justify_today: user.nbWord
             });
         }).catch( () => {
             res.status(400).json({
-                error: "La syntaxe de la requete est erronee"
+                error: "Bad Request"
             })
         });
     },
@@ -22,7 +22,7 @@ module.exports = {
 
         if (!validator.validate(email)) {
             res.status(400).json({
-                error:"email invalide"
+                error:"Invalid email"
             })
             return ;
         } 
@@ -31,14 +31,14 @@ module.exports = {
             res.status(200).json({
                 token: jwt.sign(
                     { UserId: user._id },
-                    'iyU0QAcBHcqScHD4wwWB0Vum5CobZA65eEVa0uMLT7',
+                    'your_secret_key',
                     { expiresIn: '740h' }
                 )
             });
         }).catch((error) => {
             let err = error
             if (error.code === 11000) {
-                err = "cette email existe deja"
+                err = "this email already exists"
             } 
             res.status(403).json({
                 error: err

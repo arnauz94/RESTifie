@@ -14,7 +14,9 @@ app.use('/api/justify', auth, justify);
 app.use('/api/token', token);
 
 app.use(function(req, res, next) {
-  res.send('Hello World!');
+  res.status(404).json({
+    error: 'Page not found'
+  });
 });
 
 app.listen(port, () => {
@@ -25,7 +27,7 @@ app.listen(port, () => {
         useCreateIndex: true
   });
   mongoose.connection
-  .once('open',() => console.log("Connexion à MongoDB établie !"))
+  .once('open',() => console.log("Connection to MongoDB established!"))
   .on('error',(error) => {
       console.warn('Warning',error);
   });
