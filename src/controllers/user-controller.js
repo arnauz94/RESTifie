@@ -9,7 +9,7 @@ module.exports = {
         
         User.findById({_id:id}).then( (user) => {
             res.status(200).json({
-                    email: user.email, nb_mots_restant_aujourdhui: user.nbWord
+                    email: user.email, nb_mots_justifier_aujourdhui: user.nbWord
             });
         }).catch( () => {
             res.status(400).json({

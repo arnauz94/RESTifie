@@ -5,7 +5,7 @@ String.prototype.splice = function (idx, rem, str) {
 };
 
 function concat(arrayLine) {
-    var result;
+    var result = "";
     for (var cptLine = 0; cptLine < arrayLine.length; cptLine++) {
         result += arrayLine[cptLine];
         if (result[result.length - 1] !== '\n') {
@@ -39,7 +39,7 @@ module.exports = {
                 })
                 return;
             }
-            arrayLine = text.match(/(?<Line>.{1,80})(?:\W|$)|\S{80}/g);
+            arrayLine = text.match(/(?<Line>.{1,80})(?:\W|$)|\S{80}|\s/g);
             result = concat(arrayLine);
 
             User.updateOne({ _id: id }, { $inc: { nbWord: nbWord } }).then((user) => {
